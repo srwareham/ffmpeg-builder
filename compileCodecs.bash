@@ -3,15 +3,11 @@
 # Written by Sean Wareham on November 21, 2014
 # This script compiles many of the codes / containers used in ffmpeg
 
+# Import constants
+# NOTE: constants.bash must remain in the same directory as this file
+. constants.bash
+
 #NOTE: TARGET_DIR is not escaped to serve as a reminder that it cannot contain whitespace
-
-# If no build dir has been defined, use the location of this script/build
-if [ -z "$BUILD_DIR" ]; then
-    thisDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-    BUILD_DIR="$thisDir/build"
-    mkdir -p  "$BUILD_DIR"
-fi
-
 
 # Compile ogg before vorbis
 echo "-----Compiling libogg-----"

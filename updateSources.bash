@@ -3,11 +3,9 @@
 # Written by Sean Wareham on November 21, 2014
 # This script updates any existing versioning control repos of sources needed to compile ffmpeg
 
-# If no build dir has been defined, use the location of this script
-if [ -z "$BUILD_DIR" ]
-then
-BUILD_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-fi
+# Import constants
+# NOTE: constants.bash must remain in the same directory as this file
+. constants.bash
 
 # ----Codec List-----
 # Audio: libfaac, libfdk-aac, libvorbis, libopus, libmp3lame

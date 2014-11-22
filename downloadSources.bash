@@ -3,12 +3,9 @@
 # Written by Sean Wareham on November 21, 2014
 # This script downloads source code for everything needed to compile ffmpeg
 
-# If no build dir has been defined, use the location of this script/build
-if [ -z "$BUILD_DIR" ]; then
-    thisDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-    BUILD_DIR="$thisDir/build"
-    mkdir -p  "$BUILD_DIR"
-fi
+# Import constants
+# NOTE: constants.bash must remain in the same directory as this file
+. constants.bash
 
 #-----Program List----
 # ffmpeg

@@ -22,25 +22,22 @@ createDirIfNeeded "$TARGET_DIR"
 "$SCRIPT_DIR/checkAndInstallPrereqs.bash"
 
 # Update sources already present in $BUILD_DIR
-. "$SCRIPT_DIR/updateSources.bash"
+"$SCRIPT_DIR/updateSources.bash"
 
 # Download sources to $BUILD_DIR
-. "$SCRIPT_DIR/downloadSources.bash"
+"$SCRIPT_DIR/downloadSources.bash"
 
 # Destroy anything in $BUILD_DIR subdirectories that are not from source
-. "$PROJECT_DIR/cleanSources.bash"
+"$PROJECT_DIR/cleanSources.bash"
 
 # Compile our codecs! (and a container...)
-. "$SCRIPT_DIR/compileCodecs.bash"
+"$SCRIPT_DIR/compileCodecs.bash"
 
 # Build ffmpeg with all of the bells and whistles
-echo "-----Building ffmpeg-----"
-export PKG_CONFIG_PATH=$TARGET_DIR/lib/pkgconfig:$PKG_CONFIG_PATH
-
-# Yes, ogg is still not a Codec--but this name still makes sense
-
+echo "-----Compiling ffmpeg-----"
 cd "$BUILD_DIR/ffmpeg"
 # Set external flags
+# Yes, ogg is still not a Codec--but this name still makes sense
 CODEC_FLAGS="--enable-libfaac --enable-libfdk-aac --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libx264 --enable-libx265 --enable-libxvid --enable-libvpx"
 STATIC_FLAGS="--disable-shared --extra-cflags="-I$TARGET_DIR/include -static" --extra-ldflags="-L$TARGET_DIR/lib -lm -static" --extra-version=static --enable-static --extra-cflags=--static --pkg-config-flags=--static"
 LICENSING_OPTIONS="--enable-gpl --enable-nonfree --enable-version3"
