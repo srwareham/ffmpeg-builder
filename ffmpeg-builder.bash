@@ -30,12 +30,27 @@ createDirIfNeeded "$TARGET_DIR"
 # Destroy anything in $BUILD_DIR subdirectories that are not from source
 . "$PROJECT_DIR/cleanSources.bash"
 
+# Compile our codecs! (and a container...)
 . "$SCRIPT_DIR/compileCodecs.bash"
 
 # Build ffmpeg with all of the bells and whistles
 echo "-----Building ffmpeg-----"
 export PKG_CONFIG_PATH=$TARGET_DIR/lib/pkgconfig:$PKG_CONFIG_PATH
+
+# Yes, ogg is still not a Codec--but this name still makes sense
+
 cd "$BUILD_DIR/ffmpeg"
-CFLAGS="-I$TARGET_DIR/include" LDFLAGS="-L$TARGET_DIR/lib -lm" ./configure --prefix=${OUTPUT_DIR:-$TARGET_DIR} --extra-cflags="-I$TARGET_DIR/include -static" --extra-ldflags="-L$TARGET_DIR/lib -lm -static" --extra-version=static --disable-shared --enable-static --extra-cflags=--static --pkg-config-flags=--static --disable-ffserver --disable-doc --enable-gpl --enable-pthreads --enable-postproc --enable-gray --enable-runtime-cpudetect --enable-libfaac --enable-libfdk-aac --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libx264 --enable-libx265 --enable-libxvid --enable-bzlib --enable-zlib --enable-nonfree --enable-version3 --enable-libvpx --disable-devices
+# Set external flags
+CODEC_FLAGS="--enable-libfaac --enable-libfdk-aac --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libx264 --enable-libx265 --enable-libxvid --enable-libvpx"
+STATIC_FLAGS="--disable-shared --extra-cflags="-I$TARGET_DIR/include -static" --extra-ldflags="-L$TARGET_DIR/lib -lm -static" --extra-version=static --enable-static --extra-cflags=--static --pkg-config-flags=--static"
+LICENSING_OPTIONS="--enable-gpl --enable-nonfree --enable-version3"
+FFMPEG_OPTIONS="--disable-ffserver --enable-gray"
+
+# Set internal flags
+PKG_CONFIG_PATH=$TARGET_DIR/lib/pkgconfig:$PKG_CONFIG_PATH
+CFLAGS="-I$TARGET_DIR/include"
+LDFLAGS="-L$TARGET_DIR/lib -lm"
+
+./configure --prefix=${OUTPUT_DIR:-$TARGET_DIR} $STATIC_FLAGS $LICENSING_OPTIONS $FFMPEG_OPTIONS $CODEC_FLAGS
 make
 make install
