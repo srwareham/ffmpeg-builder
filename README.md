@@ -19,4 +19,5 @@ Clone the repository, set your project directory in constants.bash, and then run
 
 Your final binary will appear in $PROJECT_DIRECTORY/target/bin
 
-Warning: compilation is a very long process. On slow machines, this is a multi-hour process.
+Warning: compilation is very computationally intensive. On slow machines, this is a multi-hour process.
+On an Intel i7-4770K @ 3.5GHz and a 2MB/s connection the process takes almost exactly 10 minutes

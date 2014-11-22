@@ -18,6 +18,9 @@ createDirIfNeeded "$PROJECT_DIR"
 createDirIfNeeded "$BUILD_DIR"
 createDirIfNeeded "$TARGET_DIR"
 
+# Install prerequisites if needed
+"$SCRIPT_DIR/checkAndInstallPrereqs.bash"
+
 # Update sources already present in $BUILD_DIR
 . "$SCRIPT_DIR/updateSources.bash"
 
