@@ -7,6 +7,9 @@
 # NOTE: constants.bash must remain in the same directory as this file
 . constants.bash
 
+# Import utils
+. utils.bash
+
 #-----Program List----
 # ffmpeg
 
@@ -16,6 +19,9 @@
 # ----Codec List-----
 # Audio: libfaac, libfdk-aac, libvorbis, libopus, libmp3lame
 # Video: libx264, libx265, libvpx, libxvid, libtheora
+
+# Create build dir if needed
+createDirIfNeeded "$BUILD_DIR"
 
 enterDir="$PWD"
 cd "$BUILD_DIR"
