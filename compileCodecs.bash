@@ -5,86 +5,143 @@
 
 # Import constants
 # NOTE: constants.bash must remain in the same directory as this file
+
 . constants.bash
+# NOTE: Shell for this script *must* be bash. See https://stackoverflow.com/questions/23814360/gnu-parallel-and-bash-functions-how-to-run-the-simple-example-from-the-manual for further detail.
+export SHELL=$(type -p bash)
 
 #NOTE: TARGET_DIR is not escaped to serve as a reminder that it cannot contain whitespace
 
-# Compile ogg before vorbis
-echo "-----Compiling libogg-----"
-cd "$BUILD_DIR/ogg"
-./autogen.sh
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared
-make
-make install
+# Need ogg before vorbis
+buildOgg(){
+    # annoyingly need to import constants every time because of GNU parallel
+    . constants.bash
+    echo "-----Compiling libogg-----"
+    cd "$BUILD_DIR/ogg"
+    ./autogen.sh
+    ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+    make
+    make install
+}
+export -f buildOgg
 
-# Compile vorbis before theora
-echo "-----Compiling libvorbis--"
-cd "$BUILD_DIR/vorbis"
-./autogen.sh
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared
-make
-make install
+# Need vorbis before theora
+buildVorbis(){
+    . constants.bash
+    echo "-----Compiling libvorbis--"
+    cd "$BUILD_DIR/vorbis"
+    ./autogen.sh
+    ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+    make
+    make install
+}
+export -f buildVorbis
 
-echo "-----Compiling libtheora--"
-cd "$BUILD_DIR/theora"
-./autogen.sh
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared
-make
-make install
+buildTheora(){
+    . constants.bash
+    echo "-----Compiling libtheora--"
+    cd "$BUILD_DIR/theora"
+    ./autogen.sh
+    ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+    make
+    make install
+}
+export -f buildTheora
 
-echo "-----Compiling libvpx-----"
-cd "$BUILD_DIR/libvpx"
-./configure --prefix=$TARGET_DIR --disable-shared
-make
-make install
+buildOggVorbisTheora(){
+    buildOgg
+    buildVorbis
+    buildTheora
+}
+export -f buildOggVorbisTheora
 
-echo "-----Compiling libfaac----"
-cd "$BUILD_DIR/libfaac"
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared
-make
-make install
+buildVpx(){
+    . constants.bash
+    echo "-----Compiling libvpx-----"
+    cd "$BUILD_DIR/libvpx"
+    ./configure --prefix=$TARGET_DIR --disable-shared
+    make
+    make install
+}
+export -f buildVpx
 
-echo "-----Compiling libfdk-aac----"
-cd "$BUILD_DIR/fdk-aac"
-./autogen.sh
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared
-make
-make install
+buildFaac(){
+    . constants.bash
+    echo "-----Compiling libfaac----"
+    cd "$BUILD_DIR/libfaac"
+    ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+    make
+    make install
+}
+export -f buildFaac
 
-echo "-----Compiling libx264----"
-cd "$BUILD_DIR/x264"
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared
-make
-make install
+buildFdkaac(){
+    . constants.bash
+    echo "-----Compiling libfdk-aac----"
+    cd "$BUILD_DIR/fdk-aac"
+    ./autogen.sh
+    ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+    make
+    make install
+}
+export -f buildFdkaac
+
+buildX264(){
+    . constants.bash
+    echo "-----Compiling libx264----"
+    cd "$BUILD_DIR/x264"
+    ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+    make
+    make install
+}
+export -f buildX264
 
 #Note: the make x265-static CMakeLists.txt call is broken. Have to build shared too :(
-echo "-----Compiling libx265----"
-cd "$BUILD_DIR/x265"
-cmake -DCMAKE_INSTALL_PREFIX:PATH=$TARGET_DIR \
--DLIBRARY_OUTPUT_PATH:PATH=$TARGET_DIR/lib \
--DBIN_INSTALL_DIR:PATH=$TARGET_DIR/bin \
--DBUILD_SHARED_LIBS:BOOL=OFF \
--DCMAKE_C_CREATE_STATIC_LIBRARY:BOOL=ON \
- source
-make
-make install
+buildX265(){
+    . constants.bash
+    echo "-----Compiling libx265----"
+    cd "$BUILD_DIR/x265"
+    cmake -DCMAKE_INSTALL_PREFIX:PATH=$TARGET_DIR \
+    -DLIBRARY_OUTPUT_PATH:PATH=$TARGET_DIR/lib \
+    -DBIN_INSTALL_DIR:PATH=$TARGET_DIR/bin \
+    -DBUILD_SHARED_LIBS:BOOL=OFF \
+    -DCMAKE_C_CREATE_STATIC_LIBRARY:BOOL=ON \
+     source
+    make
+    make install
+}
+export -f buildX265
 
-echo "-----Compiling xvidcore---"
-cd "$BUILD_DIR/xvidcore/build/generic"
-./bootstrap.sh
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared
-make -j $jval
-make install
+buildXvid(){
+    . constants.bash
+    echo "-----Compiling xvidcore---"
+    cd "$BUILD_DIR/xvidcore/build/generic"
+    ./bootstrap.sh
+    ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+    make
+    make install
+}
+export -f buildXvid
 
-echo "-----Compiling libmp3lame--"
-cd "$BUILD_DIR/libmp3lame"
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared
-make
-make install
+buildLame(){
+    . constants.bash
+    echo "-----Compiling libmp3lame--"
+    cd "$BUILD_DIR/libmp3lame"
+    ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+    make
+    make install
+}
+export -f buildLame
 
-echo "-----Compiling libopus-----"
-cd "$BUILD_DIR/opus"
-./autogen.sh
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared
-make
-make install
+buildOpus(){
+    . constants.bash
+    echo "-----Compiling libopus-----"
+    cd "$BUILD_DIR/opus"
+    ./autogen.sh
+    ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+    make
+    make install
+}
+export -f buildOpus
+
+parallel ::: buildOggVorbisTheora buildVpx buildFaac buildFdkaac buildX264 buildX265 buildXvid buildLame buildOpus

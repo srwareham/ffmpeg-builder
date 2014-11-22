@@ -56,6 +56,9 @@ installSoftPrerequisites(){
     command -v hg >/dev/null 2>&1 || { (packageManagerInstall "mercurial") }
     # Install subversion if not present
     command -v svn >/dev/null 2>&1 || { (packageManagerInstall "subversion") }
+    # Install GNU parallel if not present
+    # NOTE: some package managers may not provide the GNU version, likely will need the GNU version
+    command -v parallel >/dev/null 2>&1 || { (packageManagerInstall "parallel") }
 }
 
 # Set Package Manager
