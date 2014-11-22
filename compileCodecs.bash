@@ -5,12 +5,13 @@
 
 # Import constants
 # NOTE: constants.bash must remain in the same directory as this file
-
 . constants.bash
-# NOTE: Shell for this script *must* be bash. See https://stackoverflow.com/questions/23814360/gnu-parallel-and-bash-functions-how-to-run-the-simple-example-from-the-manual for further detail.
+
+# NOTE: SHELL for this script *must* be bash due to GNU parallel implementation.
+# See https://stackoverflow.com/questions/23814360/gnu-parallel-and-bash-functions-how-to-run-the-simple-example-from-the-manual for further detail.
 export SHELL=$(type -p bash)
 
-#NOTE: TARGET_DIR is not escaped to serve as a reminder that it cannot contain whitespace
+#NOTE: TARGET_DIR is not escaped to serve as a reminder that it cannot contain whitespace (thanks old build tools)
 
 # Need ogg before vorbis
 buildOgg(){
