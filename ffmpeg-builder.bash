@@ -28,7 +28,7 @@ createDirIfNeeded "$TARGET_DIR"
 "$SCRIPT_DIR/downloadSources.bash"
 
 # Destroy anything in $BUILD_DIR subdirectories that are not from source
-"$PROJECT_DIR/cleanSources.bash"
+"$SCRIPT_DIR/cleanSources.bash"
 
 # Compile our codecs! (and a container...)
 "$SCRIPT_DIR/compileCodecs.bash"
