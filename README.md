@@ -42,9 +42,25 @@ If you would like to update your binary, simply run the script again.  The scrip
 All prerequisites for this program are automatically installed.  If you see a request for sudo privellages, this is only used by your package manager to fetch needed packages.
 
 * Hard Prerequisites: yasm, cmake, gcc, g++
-* Soft Prerequisites: git, subversion, mercurial, wget, tar
+* Soft Prerequisites: git, subversion, mercurial, wget, tar, GNU parallel
 
-Note: to avoid soft prerequisites you would merely need to download tarballs of the sources of the codecs and ensure they are placed in the BUILD_DIR folder according to the name convention used (and of course comment out any code requiring them).
+Note: to avoid soft prerequisites you would merely need to download tarballs of the sources of the codecs and ensure they are placed in the BUILD_DIR folder according to the name convention used (and of course comment out any code requiring them).  compileCodecs.bash would also need to be modified to remove use of the parallel package
+
+**Metrics:**
+
+Space Complexity:
+
+1. Approximate total size of source code downloaded: 1.1 GB
+2. Approximate space required to compile: 1.4 GB
+3. Approximate size of single ffmpeg binary: 23 MB
+
+Time Complexity
+
+* Intel i7-4770K @ 3.5GHz
+  1. Codec compilation time (parallel): 383.16s user 34.99s system 317% cpu 2:11.53 total
+  2. ffmpeg compilation time: 328.62s user 18.92s system 93% cpu 6:10.95 total
+  3. Total runtime (with download overhead): 770.20s user 62.94s system 117% cpu 11:49.32 total
+
 
 **_For Mac Users:_**
 
