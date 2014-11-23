@@ -23,7 +23,7 @@ On an Intel i7-4770K @ 3.5GHz with a 2MB/s connection, the process takes only 10
 
 **TL;DR:**
 
-    git clone git@github.com:srwareham/ffmpeg-builder.git; cd ffmpeg-builder; ./ffmpeg-builder.bash
+    git clone https://github.com/srwareham/ffmpeg-builder.git; cd ffmpeg-builder; ./ffmpeg-builder.bash
 
 ## Usage
 
