@@ -48,18 +48,22 @@ Note: to avoid soft prerequisites you would merely need to download tarballs of 
 
 **Metrics:**
 
-Space Complexity:
+Space Use:
 
 1. Approximate total size of source code downloaded: 1.1 GB
 2. Approximate space required to compile: 1.4 GB
 3. Approximate size of single ffmpeg binary: 23 MB
 
-Time Complexity
+Time Use:
 
 * Intel i7-4770K @ 3.5GHz
-  1. Codec compilation time (parallel): 383.16s user 34.99s system 317% cpu 2:11.53 total
-  2. ffmpeg compilation time: 328.62s user 18.92s system 93% cpu 6:10.95 total
-  3. Total runtime (with download overhead): 770.20s user 62.94s system 117% cpu 11:49.32 total
+  1. Total runtime (with download overhead): 770.20s user 62.94s system 117% cpu 11:49.32 total
+  2. Codec compilation time (parallel): 383.16s user 34.99s system 317% cpu 2:11.53 total
+  3. ffmpeg compilation time: 328.62s user 18.92s system 93% cpu 6:10.95 total
+* Intel Celeron 575M @ 2.00GHz (yes these still exist)
+  1. Total runtime (with download overhead): TBD
+  2. Codec compilation time (1 core available): 5723.47s user 352.64s system 82% cpu 2:03:26.05 total
+  3. ffmpeg compilation time: 6344.10s user 292.06s system 82% cpu 2:13:20.36 total
 
 
 **_For Mac Users:_**
