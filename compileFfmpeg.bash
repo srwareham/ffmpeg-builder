@@ -12,7 +12,7 @@ LICENSING_OPTIONS="--enable-gpl --enable-nonfree --enable-version3"
 FFMPEG_OPTIONS="--disable-ffserver --enable-gray"
 
 # Set internal flags
-PKG_CONFIG_PATH=$TARGET_DIR/lib/pkgconfig:$PKG_CONFIG_PATH
+export PKG_CONFIG_PATH=$TARGET_DIR/lib/pkgconfig:$PKG_CONFIG_PATH
 CFLAGS="-I$TARGET_DIR/include"
 LDFLAGS="-L$TARGET_DIR/lib -lm"
 
