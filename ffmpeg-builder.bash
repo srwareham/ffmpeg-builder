@@ -33,21 +33,5 @@ createDirIfNeeded "$TARGET_DIR"
 # Compile our codecs! (and a container...)
 "$SCRIPT_DIR/compileCodecs.bash"
 
-# Build ffmpeg with all of the bells and whistles
-echo "-----Compiling ffmpeg-----"
-cd "$BUILD_DIR/ffmpeg"
-# Set external flags
-# Yes, ogg is still not a Codec--but this name still makes sense
-CODEC_FLAGS="--enable-libfaac --enable-libfdk-aac --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libx264 --enable-libx265 --enable-libxvid --enable-libvpx"
-STATIC_FLAGS="--disable-shared --extra-cflags="-I$TARGET_DIR/include -static" --extra-ldflags="-L$TARGET_DIR/lib -lm -static" --extra-version=static --enable-static --extra-cflags=--static --pkg-config-flags=--static"
-LICENSING_OPTIONS="--enable-gpl --enable-nonfree --enable-version3"
-FFMPEG_OPTIONS="--disable-ffserver --enable-gray"
-
-# Set internal flags
-PKG_CONFIG_PATH=$TARGET_DIR/lib/pkgconfig:$PKG_CONFIG_PATH
-CFLAGS="-I$TARGET_DIR/include"
-LDFLAGS="-L$TARGET_DIR/lib -lm"
-
-./configure --prefix=${OUTPUT_DIR:-$TARGET_DIR} $STATIC_FLAGS $LICENSING_OPTIONS $FFMPEG_OPTIONS $CODEC_FLAGS
-make
-make install
+# Compile ffmpeg with all of the bells and whistles
+"$SCRIPT_DIR/compileFfmpeg.bash"
