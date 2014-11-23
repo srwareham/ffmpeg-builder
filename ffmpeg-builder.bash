@@ -35,3 +35,4 @@ createDirIfNeeded "$TARGET_DIR"
 
 # Compile ffmpeg with all of the bells and whistles
 "$SCRIPT_DIR/compileFfmpeg.bash"
+exit

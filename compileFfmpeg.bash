@@ -19,3 +19,4 @@ LDFLAGS="-L$TARGET_DIR/lib -lm"
 ./configure --prefix=${OUTPUT_DIR:-$TARGET_DIR} --extra-cflags="-I$TARGET_DIR/include -static" --extra-ldflags="-L$TARGET_DIR/lib -lm -static" $STATIC_FLAGS $LICENSING_OPTIONS $FFMPEG_OPTIONS $CODEC_FLAGS
 make
 make install
+exit 0

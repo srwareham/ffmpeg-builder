@@ -98,3 +98,4 @@ fi
 
 # Go back to wherever we came from
 cd "$enterDir"
+exit 0

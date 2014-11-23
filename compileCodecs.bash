@@ -146,3 +146,4 @@ buildOpus(){
 export -f buildOpus
 
 parallel ::: buildOggVorbisTheora buildVpx buildFaac buildFdkaac buildX264 buildX265 buildXvid buildLame buildOpus
+exit 0
