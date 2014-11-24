@@ -61,7 +61,7 @@ Time Use:
   2. Codec compilation time (parallel): 383.16s user 34.99s system 317% cpu 2:11.53 total
   3. ffmpeg compilation time: 328.62s user 18.92s system 93% cpu 6:10.95 total
 * Intel Celeron 575M @ 2.00GHz (yes these still exist)
-  1. Total runtime (with download overhead): TBD
+  1. Total runtime (with download overhead): 12946.00s user 731.68s system 80% cpu 4:42:23.62 total
   2. Codec compilation time (1 core available): 5723.47s user 352.64s system 82% cpu 2:03:26.05 total
   3. ffmpeg compilation time: 6344.10s user 292.06s system 82% cpu 2:13:20.36 total
 
