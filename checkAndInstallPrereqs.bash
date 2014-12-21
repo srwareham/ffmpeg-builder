@@ -21,7 +21,7 @@ noInstall(){
 }
 
 packmanInstall(){
-    sudo packman -S "$1"
+    sudo pacman -S "$1"
 
 }
 
@@ -32,6 +32,11 @@ yumInstall(){
 aptGetInstall(){
     sudo apt-get update
     sudo apt-get -y install "$1"
+}
+
+brewInstall(){
+    brew update
+    brew install "$1"
 }
 
 packageManagerInstall(){
