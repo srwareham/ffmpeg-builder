@@ -21,7 +21,7 @@ noInstall(){
 }
 
 packmanInstall(){
-    sudo packman -S "$1"
+    sudo pacman -S "$1"
 
 }
 
