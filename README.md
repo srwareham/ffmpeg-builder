@@ -70,7 +70,7 @@ Time Use:
 
 The compilation process for the codecs used in this project will work on Mac OSX, but the ffmpeg compilation will fail.  This is an intended limitation of the operating system as apple views static binaries as being contrary to their design philosphy.  See https://developer.apple.com/library/mac/qa/qa1118/_index.html and  https://stackoverflow.com/questions/3801011/ld-library-not-found-for-lcrt0-o-on-osx-10-6-with-gcc-clang-static-flag for more detail.
 
-Although this script could be retooled to create of a binary using shared libraries, this is not the inteniton of this script. A static binary is extreemly easy to use and comes with virtually zero maintence once created.  If this is a feature set you are looking for on Mac OSX, I highly reccomend installing Homebrew and using it to install ffmpeg and any codecs.
+Although this script could be retooled to create of a binary using shared libraries, this is not the inteniton of this script. A static binary is extreemly easy to use and comes with virtually zero maintence once created.  If you would like to use ffmpeg using shared libraries on Mac OSX, I highly reccomend installing Homebrew and using it to install ffmpeg and any codecs.
 
 ## Contributing
 
