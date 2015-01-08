@@ -24,6 +24,7 @@ buildOgg(){
     make
     make install
 }
+# export so that GNU parallel can use it
 export -f buildOgg
 
 # Need vorbis before theora
