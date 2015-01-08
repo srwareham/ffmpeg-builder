@@ -106,7 +106,6 @@ buildX265(){
     -DLIBRARY_OUTPUT_PATH:PATH=$TARGET_DIR/lib \
     -DBIN_INSTALL_DIR:PATH=$TARGET_DIR/bin \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
-    -DCMAKE_C_CREATE_STATIC_LIBRARY:BOOL=ON \
      source
     make
     make install
