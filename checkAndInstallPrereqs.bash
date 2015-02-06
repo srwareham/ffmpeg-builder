@@ -52,6 +52,10 @@ installHardPrerequisites(){
     command -v yasm >/dev/null 2>&1 || { (packageManagerInstall "yasm") }
     # Install CMAKE if not present
     command -v cmake >/dev/null 2>&1 || { (packageManagerInstall "cmake") }
+    # Install automake if not present
+    command -v cmake >/dev/null 2>&1 || { (packageManagerInstall "automake") }
+    # Install libtool if not present
+    command -v cmake >/dev/null 2>&1 || { (packageManagerInstall "libtool") }
 }
 
 installSoftPrerequisites(){
