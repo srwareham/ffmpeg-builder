@@ -1,5 +1,5 @@
-#!/bin/bash
-. constants.bash
+#!/usr/bin/env bash
+source constants.bash
 
 # Build ffmpeg with all of the bells and whistles
 echo "-----Compiling ffmpeg-----"

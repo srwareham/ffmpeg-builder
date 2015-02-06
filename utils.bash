@@ -1,6 +1,4 @@
-
-
-#!/bin/bash
+#!/usr/bin/env bash
 # Written by Sean Wareham on October 10, 2014
 
 #------------File System Utils---------------

@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Written by Sean Wareham on November 21, 2014
 # This script resets source repositories to the HEAD of origin master
 
 # Import constants
 # NOTE: constants.bash must remain in the same directory as this file
-. constants.bash
+source constants.bash
 
 # ----Codec List-----
 # Audio: libfaac, libfdk-aac, libvorbis, libopus, libmp3lame

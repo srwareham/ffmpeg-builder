@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Written by Sean Wareham on November 21, 2014
 # This script holds the constants used to build ffmpeg

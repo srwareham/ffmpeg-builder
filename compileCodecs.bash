@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Written by Sean Wareham on November 21, 2014
 # This script compiles many of the codes / containers used in ffmpeg
 
 # Import constants
 # NOTE: constants.bash must remain in the same directory as this file
-. constants.bash
+source constants.bash
 
 # NOTE: SHELL for this script *must* be bash due to GNU parallel implementation.
 # See https://stackoverflow.com/questions/23814360/gnu-parallel-and-bash-functions-how-to-run-the-simple-example-from-the-manual for further detail.

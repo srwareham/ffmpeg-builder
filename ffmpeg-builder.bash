@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Written by Sean Wareham on November 21, 2014
 # This script aims to provide a one-press solution to installing ffmpeg
@@ -9,10 +9,10 @@
 # Gives us the directory of this script
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Load Constants
-. "$SCRIPT_DIR/constants.bash" 
+source "$SCRIPT_DIR/constants.bash" 
 
 # Load Utils
-. "$SCRIPT_DIR/utils.bash"
+source "$SCRIPT_DIR/utils.bash"
 
 createDirIfNeeded "$PROJECT_DIR"
 createDirIfNeeded "$BUILD_DIR"

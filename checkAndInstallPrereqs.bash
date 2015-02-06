@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Script for installing prerequisites on systesms with apt-get, yum, or packman
 # NOTE: This is untested on packman and yum.  No gaurentees on their syntax being perfect...
