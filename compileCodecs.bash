@@ -13,7 +13,10 @@ export SHELL=$(type -p bash)
 
 #NOTE: TARGET_DIR is not escaped to serve as a reminder that it cannot contain whitespace (thanks old build tools)
 
-USE_PARALLEL=1
+# If optional flag has not been set, set default to serial compilation
+if [ ! "$USE_PARALLEL" ]; then
+    USE_PARALLEL=0
+fi
 
 # Need ogg before vorbis
 buildOgg(){

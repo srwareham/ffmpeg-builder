@@ -11,3 +11,7 @@ BUILD_DIR="${BUILD_DIR:-$PROJECT_DIR/build}"
 # with whitespace in them.  TARGET_DIR must not contain whitespace.
 #(the binaries can easily be moved afterwards, however)
 TARGET_DIR="${TARGET_DIR:-$PROJECT_DIR/target}"
+
+#Options
+# Use GNU Parallel to compile codecs; makes setup *much* faster on multicore machines
+USE_PARALLEL=1
