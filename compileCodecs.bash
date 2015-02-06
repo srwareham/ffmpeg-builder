@@ -13,6 +13,8 @@ export SHELL=$(type -p bash)
 
 #NOTE: TARGET_DIR is not escaped to serve as a reminder that it cannot contain whitespace (thanks old build tools)
 
+USE_PARALLEL=1
+
 # Need ogg before vorbis
 buildOgg(){
     # annoyingly need to import constants every time because of GNU parallel
@@ -145,5 +147,32 @@ buildOpus(){
 }
 export -f buildOpus
 
-parallel ::: buildOggVorbisTheora buildVpx buildFaac buildFdkaac buildX264 buildX265 buildXvid buildLame buildOpus
-exit 0
+exitOnFailure(){
+    "$1"
+    if [ $? -ne 0 ]; then
+        echo "ERROR: $1 did not terminate successfully"
+        exit 1
+    fi
+}
+
+compileSerially(){
+    exitOnFailure buildOgg
+    exitOnFailure buildVorbis
+    exitOnFailure buildTheora 
+    exitOnFailure buildVpx 
+    exitOnFailure buildFaac
+    exitOnFailure buildFdkaac
+    exitOnFailure buildX264
+    exitOnFailure buildX265
+    exitOnFailure buildXvid
+    exitOnFailure buildLame
+    exitOnFailure buildOpus
+}
+
+if [ USE_PARALLEL -eq 1 ]; then
+    parallel ::: buildOggVorbisTheora buildVpx buildFaac buildFdkaac buildX264 buildX265 buildXvid buildLame buildOpus
+    exit 0
+else
+    compileSerially
+    exit 0
+fi
