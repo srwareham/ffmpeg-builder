@@ -10,8 +10,8 @@ INSTALL_COMMAND="noInstall"
 
 # Sets the package manager (later occuring lines have higher presidence)
 setPackageManager(){
-    command -v apt-get >/dev/null 2>&1 && INSTALL_COMMAND="packmanInstall"
-    command -v apt-get >/dev/null 2>&1 && INSTALL_COMMAND="yumInstall"
+    command -v packman >/dev/null 2>&1 && INSTALL_COMMAND="packmanInstall"
+    command -v yum >/dev/null 2>&1 && INSTALL_COMMAND="yumInstall"
     command -v apt-get >/dev/null 2>&1 && INSTALL_COMMAND="aptGetInstall"
 }
 
