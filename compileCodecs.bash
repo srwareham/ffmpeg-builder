@@ -173,7 +173,7 @@ compileSerially(){
     exitOnFailure buildOpus
 }
 
-if [ USE_PARALLEL -eq 1 ]; then
+if [ $USE_PARALLEL -eq 1 ]; then
     parallel ::: buildOggVorbisTheora buildVpx buildFaac buildFdkaac buildX264 buildX265 buildXvid buildLame buildOpus
     exit 0
 else
