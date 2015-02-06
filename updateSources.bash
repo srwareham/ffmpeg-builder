@@ -31,7 +31,7 @@ hgUpdate(){
 svnUpdate(){
     enter="$PWD"
     cd "$1"
-    svn up
+    svn up --non-interactive --no-auth-cache --username anonymous --password anything
     cd "$enter"
 }
 
