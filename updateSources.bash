@@ -5,7 +5,7 @@
 
 # Import constants
 # NOTE: constants.bash must remain in the same directory as this file
-source constants.bash
+. constants.bash
 
 # ----Codec List-----
 # Audio: libfaac, libfdk-aac, libvorbis, libopus, libmp3lame

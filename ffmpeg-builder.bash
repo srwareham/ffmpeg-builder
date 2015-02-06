@@ -9,10 +9,10 @@
 # Gives us the directory of this script
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Load Constants
-source "$SCRIPT_DIR/constants.bash" 
+. "$SCRIPT_DIR/constants.bash" 
 
 # Load Utils
-source "$SCRIPT_DIR/utils.bash"
+. "$SCRIPT_DIR/utils.bash"
 
 createDirIfNeeded "$PROJECT_DIR"
 createDirIfNeeded "$BUILD_DIR"

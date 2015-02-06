@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Written by Sean Wareham on February 5, 2015
 # This script is intended to contain desired post-processing after ffmpeg has been built
-source constants.bash
-source utils.bash
+. constants.bash
+. utils.bash
 
 # Function to take an input file, and rename it as /path/to/file.old
 #params $1 Full path of file to rename

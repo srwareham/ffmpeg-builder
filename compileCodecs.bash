@@ -5,7 +5,7 @@
 
 # Import constants
 # NOTE: constants.bash must remain in the same directory as this file
-source constants.bash
+. constants.bash
 
 # NOTE: SHELL for this script *must* be bash due to GNU parallel implementation.
 # See https://stackoverflow.com/questions/23814360/gnu-parallel-and-bash-functions-how-to-run-the-simple-example-from-the-manual for further detail.

@@ -5,7 +5,7 @@
 
 # Import constants
 # NOTE: constants.bash must remain in the same directory as this file
-source constants.bash
+. constants.bash
 
 # Import utils
 . utils.bash
