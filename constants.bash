@@ -15,3 +15,10 @@ TARGET_DIR="${TARGET_DIR:-$PROJECT_DIR/target}"
 #Options
 # Use GNU Parallel to compile codecs; makes setup *much* faster on multicore machines
 USE_PARALLEL=1
+# Whether or not to copy ffmpeg binary from target/bin  
+COPY_FFMPEG_BINARY=1
+# Only relevant if COPY_FFMPEG_BINARY=1; if destination not given, defaults to ~/bin
+FFMPEG_BINARY_DESTINATION="$HOME/bin"
+# Whether or not copying the binary needs root. Only really useful when the binary 
+# needs to be in a privileged area. DO NOT use this if not necessary
+#COPY_FFMPEG_NEEDS_ROOT=1
