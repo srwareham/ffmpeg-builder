@@ -10,6 +10,7 @@ INSTALL_COMMAND="noInstall"
 
 # Sets the package manager (later occuring lines have higher presidence)
 setPackageManager(){
+    command -v pkg >/dev/null 2>&1 && INSTALL_COMMAND="pkgInstall"
     command -v packman >/dev/null 2>&1 && INSTALL_COMMAND="packmanInstall"
     command -v yum >/dev/null 2>&1 && INSTALL_COMMAND="yumInstall"
     command -v apt-get >/dev/null 2>&1 && INSTALL_COMMAND="aptGetInstall"
@@ -32,6 +33,10 @@ yumInstall(){
 aptGetInstall(){
     sudo apt-get update
     sudo apt-get -y install "$1"
+}
+
+pkgInstall(){
+    sudo pkg install -y "$1"
 }
 
 packageManagerInstall(){
