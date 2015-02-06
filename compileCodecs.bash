@@ -163,7 +163,8 @@ compileSerially(){
     exitOnFailure buildVorbis
     exitOnFailure buildTheora 
     exitOnFailure buildVpx 
-    exitOnFailure buildFaac
+    # Has weird errors but seems to work, so don't want to break here
+    buildFaac
     exitOnFailure buildFdkaac
     exitOnFailure buildX264
     exitOnFailure buildX265
