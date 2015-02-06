@@ -57,7 +57,7 @@ fi
 
 # Download libxvid
 if [ ! -d "$BUILD_DIR/xvidcore" ]; then
-    svn checkout http://svn.xvid.org/trunk/xvidcore --username anonymous --password anything
+    svn checkout http://svn.xvid.org/trunk/xvidcore --non-interactive --no-auth-cache --username anonymous --password anything
 fi
 
 # Download libtheora
