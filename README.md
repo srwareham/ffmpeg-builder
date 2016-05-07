@@ -1,6 +1,12 @@
 ffmpeg-builder
 ==============
 
+\***NO LONGER MAINTAINED**\*
+============================
+This project is no longer maintained as it has been supplanted by [docker ffmpeg compiler](https://github.com/srwareham/docker-ffmpeg-compiler). I have left it up largely as reference code in case I ever want to make the mistake of starting a medium-to-large scale bash project again.
+
+
+
 ffmpeg-builder is an easy-to-use program to build a static ffmpeg binary with most of the popular codecs baked in.
 
 ## Programs fetched and compiled:
